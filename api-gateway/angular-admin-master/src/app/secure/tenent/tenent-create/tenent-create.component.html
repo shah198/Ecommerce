@@ -1,0 +1,20 @@
+<form [formGroup]="form" (submit)="submit()">
+  <div class="mb-3 mt-3 row">
+    <label class="col-sm-2 col-form-label">Name</label>
+    <div class="col-sm-10">
+      <input formControlName="name" class="form-control" name="name">
+    </div>
+  </div>
+
+  <div class="mb-3 row" formArrayName="users">
+    <label class="col-sm-2 col-form-label">users</label>
+    <div class="col-sm-10">
+      <tr *ngFor="let user of users let i = index" [formGroupName]="i">
+          <input class="form-check-input" type="checkbox" formControlName="value">
+          <td>{{user.id}}</td>
+      </tr>
+    </div>
+  </div>
+
+  <button class="btn btn-outline-secondary">Save</button>
+</form>
